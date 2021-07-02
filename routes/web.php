@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('test', function(){
-    return "hello";
+Route::prefix('site')->name('web.')->group(function(){
+    Route::get('/home',[SiteController::class,'index'])->name('home');
+    Route::get('/about-us',[SiteController::class,'about'])->name('about');
 });
+Route::get('/post/{id}/{name?}',[SiteController::class,'post']);    
+
+// Route::group(['prefix' => 'fronend'],function(){
+//     Route::get('/home',[SiteController::class,'index'])->name('home');
+//     Route::get('/about',[SiteController::class,'about'])->name('about');
+// });
+// Route::prefix('test')->group(function(){
+//     Route::get('/home',[SiteController::class,'index'])->name('home');
+//     Route::get('/about',[SiteController::class,'about'])->name('about');
+// });
