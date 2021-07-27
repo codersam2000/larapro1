@@ -17,15 +17,21 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $posts  = Post::orderby('id','desc')->paginate(7);
+        $posts  = Post::with('Category','User')
+                        ->where('status','active')
+                        ->orderby('id','desc')
+                        ->paginate(7);
     return view('frontend.home', compact('posts'));
     }
+
+
     public function cat_post($id)
     {
-        $posts = Post::where('category_id',$id)->get();
-       
-        
-    return view('frontend.home', compact('posts'));
+        $posts = Post::with('Category','User')
+                        ->where('status','active')
+                        ->where('category_id',$id)
+                        ->get();  
+    return view('frontend.category-post', compact('posts'));
     }
 
     public function single(Post $post)
@@ -100,7 +106,9 @@ class SiteController extends Controller
 
     public function search(Request $request){
         $search_text = $request->search_text;
-        $posts = Post::where('title','LIKE','%'.$search_text.'%')->get();
-        return view('frontend.home', compact('posts'));
+        $posts = Post::where('title','LIKE','%'.$search_text.'%')
+        ->where('status','active')
+        ->get();
+        return view('frontend.search-result', compact('posts'));
     }
 }

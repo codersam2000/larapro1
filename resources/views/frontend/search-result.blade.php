@@ -1,12 +1,12 @@
 @extends('frontend.components.layout')
 @section('title')
-    Blog Home Page
+    Search result
 @endsection
 @section('content')
 <article>
 @if(count($posts)>0)
 @foreach($posts as $post)
-    @if($post->category->status=='active')
+	@if($post->category->status=='active')
     <header class="mb-4">
         <!-- Post title-->
         <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>

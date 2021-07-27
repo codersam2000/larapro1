@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="card-footer">
-          <input type="submit" class="btn btn-primary pull-right" value="Create">
+          <input type="submit" class="btn btn-primary pull-right" value="update">
         </div>
       </div>
       </form>

@@ -13,7 +13,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('assets/frontend/vendor/css/styles.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/fontawesome/css/all.css') }}" rel="stylesheet" />
-
+        <script src="{{ asset('assets/frontend/vendor/js/jquery.v3.6.0.min.js') }}"></script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -38,5 +38,6 @@
         <!-- Core theme JS-->
         <script src="{{ asset('assets/frontend/vendor/js/script.js') }}"></script>
         <script src="{{ asset('assets/fontawesome/js/all.js') }}"></script>
+        
     </body>
 </html>

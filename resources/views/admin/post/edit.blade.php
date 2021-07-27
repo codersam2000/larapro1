@@ -1,6 +1,6 @@
 @extends('admin.components.layout')
 @section('title')
-   Add new post
+   Update post
 @endsection
 @section('content')
   <div class="row justify-content-center">
@@ -28,7 +28,7 @@
             <div class="form-group">
               <label for="name">Title</label>
               <input type="text" class="form-control" name="title" placeholder="Write title" id="name" value="{{$post->title}}">
-              <textarea class="form-control mt-3" style="height:200px" name="des">{{$post->des}}</textarea>
+              <textarea id="editor" class="form-control mt-3" style="height:200px" name="des">{{$post->des}}</textarea>
             </div>
         </div>
         <div class="card-footer">
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="card-footer">
-          <input type="submit" class="btn btn-primary pull-right" value="Publice">
+          <input type="submit" class="btn btn-primary pull-right" value="Update">
         </div>
       </div>
       </form>
@@ -83,6 +83,10 @@
         function previ(){
           img_pv.src = URL.createObjectURL(event.target.files[0]);
         }
+      </script>
+      <script>
+        var editor = CKEDITOR.replace( 'editor' );
+        CKFinder.setupCKEditor( editor );
       </script>
     </div>
   </div>

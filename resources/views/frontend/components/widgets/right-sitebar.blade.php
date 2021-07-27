@@ -2,12 +2,13 @@
     <div class="card mb-4">
         <div class="card-header">Search</div>
         <div class="card-body">
-            <form action="{{route('search')}}" method="post">
+            <form action="{{ route('post.search') }}" method="post">
             @csrf
                 <div class="input-group">
-                    <input class="form-control" type="text" name="search_text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                    <input id="search" class="form-control" type="text" name="search_text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
                     <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
                 </div>
+                <div id="output"></div>
             </form>
         </div> 
     </div>
@@ -37,3 +38,18 @@
         @endforeach
         @endif
     </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#search').on('keyup',function(){
+            var search_text = $('#search').val();
+                $.ajax({
+                    type:'get',
+                    url:"{{ route('live.search') }}",
+                    data:{search_text:search_text},
+                    success:function($data){
+                        $('#output').html($data);
+                    }
+                });
+            })      
+        });   
+    </script>

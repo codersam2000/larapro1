@@ -1,12 +1,6 @@
-@extends('frontend.components.layout')
-@section('title')
-    Blog Home Page
-@endsection
-@section('content')
-<article>
-@if(count($posts)>0)
+
 @foreach($posts as $post)
-    @if($post->category->status=='active')
+	@if($post->category->status=='active')
     <header class="mb-4">
         <!-- Post title-->
         <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
@@ -23,12 +17,3 @@
     </section>
     @endif
 @endforeach
-@else
-<h1>No posts found!</h1>
-<a href="{{route('home')}}">Back to Home</a>
-@endif
-</article>
-@if(count($posts)>0)
-{{ $pagination->links() }}
-@endif
-@endsection

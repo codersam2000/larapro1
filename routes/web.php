@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Fronend\SiteController;
+use App\Http\Controllers\Fronend\SearchController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashBoardController;
 use App\Http\Controllers\admin\PostController;
@@ -49,7 +50,8 @@ Route::group(['middleware'=>'admin_auth'],function(){
 });
 
 //search 
-Route::post('/search',[SiteController::class, 'search'])->name('search');
+Route::post('post/search',[SearchController::class, 'search'])->name('post.search');
+Route::get('/search/ajax',[SearchController::class, 'liveSearch'])->name('live.search');
 //Route::resource('post',PostController::class);
 
 

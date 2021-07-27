@@ -1,6 +1,6 @@
 @extends('frontend.components.layout')
 @section('title')
-    Blog Home Page
+    Category posts
 @endsection
 @section('content')
 <article>
